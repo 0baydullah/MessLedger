@@ -1,7 +1,15 @@
+using log4net.Config;
+using log4net;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());  // for logger
+XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));   // for logger
+
 
 var app = builder.Build();
 

@@ -13,4 +13,8 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="3.0.4" />
+  </ItemGroup>
+
 </Project>

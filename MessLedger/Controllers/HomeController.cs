@@ -1,20 +1,18 @@
 using System.Diagnostics;
-using MessLedger.Models;
+using log4net;
 using Microsoft.AspNetCore.Mvc;
+using ML.Web.ViewModels;
 
 namespace MessLedger.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        private readonly ILog _log = LogManager.GetLogger(typeof(HomeController));
 
         public IActionResult Index()
         {
+            throw new DivideByZeroException();
+            _log.Info("Welcome to Mess Ledger");
             return View();
         }
 
@@ -26,7 +24,7 @@ namespace MessLedger.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorVM { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
