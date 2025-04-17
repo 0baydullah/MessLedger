@@ -1,15 +1,22 @@
 using log4net.Config;
 using log4net;
 using System.Reflection;
+using ML.Service;
+using ML.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+// Register Dependency injection of iservice and irepository layer
+builder.Services.AddServiceLayer();
+builder.Services.AddRepositoryLayer();
+
+
 var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());  // for logger
 XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));   // for logger
-
 
 var app = builder.Build();
 

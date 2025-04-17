@@ -13,4 +13,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ML.Repository\ML.Repository.csproj" />
+    <ProjectReference Include="..\ML.Service\ML.Service.csproj" />
+  </ItemGroup>
+
 </Project>

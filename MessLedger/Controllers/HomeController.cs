@@ -11,13 +11,8 @@ namespace MessLedger.Controllers
 
         public IActionResult Index()
         {
-            throw new DivideByZeroException();
+          //  throw new DivideByZeroException();
             _log.Info("Welcome to Mess Ledger");
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
             return View();
         }
 

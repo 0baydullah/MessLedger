@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace ML.Repository
 {
-    internal class DependencyInjection
+    public static class DependencyInjection
     {
+        public static IServiceCollection AddRepositoryLayer(this IServiceCollection services)
+        {
+            //  services.AddScoped<IRoleRepo, RoleRepo>();
+
+
+            return services;
+        }
     }
+    
 }
