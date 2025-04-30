@@ -9,10 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<AppDbContext>(
+    option => option.UseSqlServer(builder.Configuration.GetConnectionString("cs"))
+);
 
-// Register Dependency injection of iservice and irepository layer
-builder.Services.AddServiceLayer();
-builder.Services.AddRepositoryLayer();
+
+builder.Services.AddServiceLayer(); // for dependency injection
+builder.Services.AddRepositoryLayer(); // for dependency injection
 
 
 var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());  // for logger
