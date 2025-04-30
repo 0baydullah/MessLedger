@@ -1,10 +1,12 @@
 using log4net.Config;
 using log4net;
 using System.Reflection;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ML.Service;
 using ML.Repository;
 using ML.Repository.Data;
+using ML.Repository.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,10 @@ builder.Services.AddDbContext<AppDbContext>(
     option => option.UseSqlServer(builder.Configuration.GetConnectionString("cs"))
 );
 
+builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
+    {
+        options.Password.RequiredLength = 4;
+    }).AddEntityFrameworkStores<AppDbContext>(); // for identity
 
 builder.Services.AddServiceLayer(); // for dependency injection
 builder.Services.AddRepositoryLayer(); // for dependency injection
