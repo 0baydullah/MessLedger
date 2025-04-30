@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace ML.Repository.Data;
 
 public class AppDbContext : DbContext

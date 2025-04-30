@@ -1,8 +1,10 @@
 using log4net.Config;
 using log4net;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using ML.Service;
 using ML.Repository;
+using ML.Repository.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
